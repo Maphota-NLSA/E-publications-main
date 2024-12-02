@@ -38,7 +38,7 @@ if (!$result) {
 
 // Prepare document data
 $documents = [];
-$baseUrl = "http://localhost/uploads/"; // Replace with your server URL
+$baseUrl = "http://localhost/E-publications-main/uploads/"; //  server URL
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Generate a relative or absolute URL for the file path
