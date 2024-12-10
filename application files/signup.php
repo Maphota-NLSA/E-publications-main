@@ -1,10 +1,15 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/signup.css"> 
-    <link rel="nlsa_logo" type="x-icon" href="../assets/img/LogoL.jpeg">
+    <link href="../assets/img/favicon.webp" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script defer type="text/javascript" src="../assets/js/signup.js"></script>
     <title>Sign Up</title>
 </head>
@@ -12,6 +17,20 @@
     <div class="wrapper">
         <h1>Sign Up</h1>
         <p id="error-text"></p>
+        <?php 
+            if (isset($_SESSION['status'])) {
+
+                ?>
+                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                        <div>
+                            <?php echo $_SESSION['status']; ?>
+                        </div>
+                    </div>
+                <?php
+                unset($_SESSION['status']);
+            }  
+        ?>
         <form id="form" method="post" action="../assets/php/signup.php">
             <div>
                 <label for="full-name-input">
@@ -46,7 +65,7 @@
             </div>
             <button type="submit" id="submit">Sign Up</button>
         </form>
-        <p>Already have an account?<a href="cataloguerlogin.html">Login</a></p>
+        <p>Already have an account?<a href="../application files/cataloguerlogin.php">Login</a></p>
     </div>
 </body>
 </html>

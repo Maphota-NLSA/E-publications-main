@@ -34,7 +34,7 @@
     </a>
 
      <!-- Admin Login Button -->
-     <a href="cataloguerlogin.html" class="admin-login-button">
+     <a href="cataloguerlogin.php" class="admin-login-button">
         <i class="bi bi-person-circle"></i> Catalogue Login
     </a>
 
@@ -55,7 +55,7 @@
         <div class="side-right">
             <h4 class="text-center mb-4">Administrator</h4>
 
-            <form class="sub-form" method="post" action="../assets/php/Login.php">
+            <form class="sub-form" method="post" action="../assets/php/adminlogin.php">
                 <!-- Email Input -->
                 <div class="input-group mb-3">
                     <span class="input-group-text">

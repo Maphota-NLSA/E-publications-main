@@ -42,10 +42,10 @@
       <nav class="col-md-3 col-lg-2 d-md-block sidebar">
         <h3 class="text-center py-3">Cataloguer Dashboard</h3>
         <ul class="nav flex-column">
-          <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-          <li class="nav-item"><a href="profile.html" class="nav-link">Profile</a></li>
-          <li class="nav-item"><a href="notifications.html" class="nav-link">Notifications</a></li>
-          <li class="nav-item"><a href="logout.html" class="nav-link">Logout</a></li>
+          <li class="nav-item"><a href="dashboard.php" class="nav-link">Dashboard</a></li>
+          <li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
+          <li class="nav-item"><a href="notifications.php" class="nav-link">Notifications</a></li>
+          <li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>
         </ul>
       </nav>
 
@@ -79,7 +79,7 @@
       const tableBody = document.getElementById('documents-table');
 
       // Fetch document data from PHP backend
-      fetch('../assets/php/fetch_documents.php')
+      fetch('fetch_documents.php')
         .then(response => response.json())
         .then(data => {
           if (data.documents && data.documents.length === 0) {
@@ -89,18 +89,32 @@
 
           // Populate table
           tableBody.innerHTML = data.documents.map(doc => `
-            <tr>
-              <td>${doc.id}</td>
-              <td>${doc.title}</td>
-              <td>${doc.description}</td>
-              <td><a href="${doc.file_path}" target="_blank">View</a></td>
-              <td>${doc.download_count}</td>
-              <td>
-                <button class="btn btn-success" onclick="downloadDocument(${doc.id})">
-                  Download <i class="bi bi-download"></i>
-                </button>
-              </td>
-            </tr>
+<tr>
+  <td>${doc.id}</td>
+  <td>
+    <a href="view.php?doc_id=${doc.id}" class="text-decoration-none text-dark">
+      ${doc.title}
+    </a>
+  </td>
+  <td>${doc.description}</td>
+  <td>
+    <a href="view.php?doc_id=${doc.id}" class="btn btn-primary">
+      View Details
+    </a>
+  </td>
+  <td>
+    <a href="${doc.file_path}" target="_blank" class="btn btn-link">
+      View File
+    </a>
+  </td>
+  <td>${doc.download_count}</td>
+  <td>
+    <button class="btn btn-success" onclick="downloadDocument(${doc.id})">
+      Download <i class="bi bi-download"></i>
+    </button>
+  </td>
+</tr>
+
           `).join('');
         })
         .catch(err => {
@@ -114,7 +128,7 @@
         .then(response => response.json())
         .then(data => {
           if (data.success) {
-            window.location.href = data.file_path; // Redirect to file path to trigger download
+            window.location.href = data.file_path; 
           } else {
             alert(data.message || 'Error downloading file.');
           }

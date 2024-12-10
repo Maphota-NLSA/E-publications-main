@@ -1,3 +1,97 @@
+<?php
+// Start session
+session_start();
+
+// Database connection
+include 'conn.php';
+
+// Pagination variables
+$limit = 5; // Number of notifications per page
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+
+// Filters
+$type = isset($_GET['type']) ? $_GET['type'] : 'all';
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$date = isset($_GET['date']) ? $_GET['date'] : '';
+
+try {
+    // Base query
+    $query = "SELECT * FROM notifications WHERE 1=1";
+    $params = [];
+    $types = "";
+
+    if ($type !== 'all') {
+        $query .= " AND type = ?";
+        $params[] = $type;
+        $types .= "s";
+    }
+
+    if (!empty($search)) {
+        $query .= " AND (title LIKE ? OR description LIKE ?)";
+        $params[] = "%$search%";
+        $params[] = "%$search%";
+        $types .= "ss";
+    }
+
+    if (!empty($date)) {
+        $query .= " AND date = ?";
+        $params[] = $date;
+        $types .= "s";
+    }
+
+    $query .= " ORDER BY date DESC LIMIT ? OFFSET ?";
+    $params[] = $limit;
+    $params[] = $offset;
+    $types .= "ii";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param($types, ...$params);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $notifications = $result->fetch_all(MYSQLI_ASSOC);
+
+    // Get total notifications count
+    $countQuery = "SELECT COUNT(*) as total FROM notifications WHERE 1=1";
+    $countParams = [];
+    $countTypes = "";
+
+    if ($type !== 'all') {
+        $countQuery .= " AND type = ?";
+        $countParams[] = $type;
+        $countTypes .= "s";
+    }
+
+    if (!empty($search)) {
+        $countQuery .= " AND (title LIKE ? OR description LIKE ?)";
+        $countParams[] = "%$search%";
+        $countParams[] = "%$search%";
+        $countTypes .= "ss";
+    }
+
+    if (!empty($date)) {
+        $countQuery .= " AND date = ?";
+        $countParams[] = $date;
+        $countTypes .= "s";
+    }
+
+    $countStmt = $conn->prepare($countQuery);
+    $countStmt->bind_param($countTypes, ...$countParams);
+    $countStmt->execute();
+    $totalNotifications = $countStmt->get_result()->fetch_assoc()['total'];
+    $totalPages = ceil($totalNotifications / $limit);
+
+    // Response
+    echo json_encode([
+        'success' => true,
+        'documents' => $notifications,
+        'totalPages' => $totalPages
+    ]);
+} catch (mysqli_sql_exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Database query failed: ' . $e->getMessage()]);
+}
+exit();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,12 +165,8 @@
             const dateFilter = document.getElementById("date-filter").value;
 
             try {
-                const response = await fetch(`../assets/php/fetch_notifications.php?page=${page}&search=${searchQuery}&type=${typeFilter}&date=${dateFilter}`);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
+                const response = await fetch(`notifications.php?page=${page}&search=${searchQuery}&type=${typeFilter}&date=${dateFilter}`);
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 const data = await response.json();
 
                 if (!data.success) {
@@ -102,16 +192,11 @@
             }
 
             notifications.forEach(notification => {
-                const downloadButton = notification.file_path 
-                    ? `<a href="${notification.file_path}" class="btn btn-link" download>Download</a>` 
-                    : '';
-
                 const notificationItem = `
                     <li class="list-group-item notification-item">
                         <h5>${notification.title}</h5>
                         <p class="mb-1">${notification.description}</p>
                         <small class="text-muted">Type: ${notification.type} | Date: ${notification.date}</small>
-                        ${downloadButton}
                     </li>
                 `;
                 notificationList.innerHTML += notificationItem;
@@ -128,12 +213,10 @@
                 const pageItem = document.createElement("li");
                 pageItem.className = `page-item ${i === currentPage ? "active" : ""}`;
                 pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-
                 pageItem.addEventListener("click", (e) => {
                     e.preventDefault();
                     fetchNotifications(i);
                 });
-
                 paginationContainer.appendChild(pageItem);
             }
         }
