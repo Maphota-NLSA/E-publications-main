@@ -19,7 +19,7 @@
   <div class="scrollable-table">
   <table class="table">
     <thead>
-      <t>
+      <tr>
         <th>Book ID</th>
         <th>Publisher Email</th>
         <th>Author Name</th>

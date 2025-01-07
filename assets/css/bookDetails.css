@@ -1,14 +1,14 @@
 .scrollable-table{
     height: 500px;
     width: 100%;
-    overflow-y: auto;
+    overflow-y: inherit;
+    display: block;
     scroll-snap-type: y mandatory;
 }
 
-/* .scrollable-table > .table{
+.scrollable-table > .table{
     width: 100%;
-} */
-
+}
 .table{
     font-family: 'Inter', sans-serif;
     border-collapse: collapse;

@@ -88,7 +88,7 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
                 </a>
               </li>
               <li>
-                <a href="">
+              <a href="task.php">
                   <span class="las la-tasks"></span>
                   Task
                 </a>
@@ -100,7 +100,7 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
                 </a>
               </li>
               <li>
-                <a href="../application files/index.php">
+                <a href="../application files/logout.php">
                   <span class="las la-sign-out-alt"></span>
                   Logout
                 </a>
@@ -120,13 +120,6 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
                 </label>
             </div>
           <!-- <span class="bars"> </span> -->
-          <div class="header-icons">
-            <span class="las la-search">
-              
-            </span>
-            <span class="las la-bookmark"></span>
-            <span class="las la-sms"></span>
-          </div>
         </header>
 
         <main>
@@ -135,16 +128,7 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
               <h1>Analytics Dashboard</h1>
               <small>Monitor key metrics. Check reporting and review insights</small>
             </div>
-            <div class="header-actions">
-              <button>
-                <span class="las la-file-export"></span>
-                Export
-              </button>
-              <button>
-                <span class="las la-tools"></span>
-                Settings
-              </button>
-            </div>
+
           </div>
 
           <div class="cards">

@@ -1,9 +1,8 @@
 <?php 
-    include "../assets/php/conn.php";
+    require_once('../assets/php/conn.php');
     $book_id = $_GET['Book_ID'];
-        
-    if (isset($_POST['submit'])) {
-        
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')  {
         $publisher_email = $_POST["PublisherEmail"];
         $author_name = $_POST["AuthorName"];
         $author_pseudonym = $_POST["AuthorPseudonym"];
@@ -17,10 +16,12 @@
         $price = $_POST["Price"];
         $fiction_or_non = $_POST["FictionOrNonFiction"];
         $englishVersionTitle = $_POST["EnglishVersionTitle"];
+        $genre = $_POST["Genre"];
+
+        $sqlUpdate = "UPDATE `book_informationsheet` SET `BookEdition`='$book_edition',`Price` = '$price',`AuthorPseudonym`='$author_pseudonym',`FictionOrNonFiction`='$fiction_or_non',`Impression`='$impression',`SetISBN`='$set_isbn',`EditorName`='$editor_name',`PublicationYear`='$publication_year',`EnglishVersionTitle`='$englishVersionTitle',`Genre`='$genre' WHERE Book_ID=$book_id";
         
-        $sql = "UPDATE `book_informationsheet` SET `BookEdition`='$book_edition',`Price` = '$price',`AuthorPseudonym`='$author_pseudonym',
-        `FictionOrNonFiction`='$fiction_or_non',`Impression`='$impression',`SetISBN`='$set_isbn',`EditorName`='$editor_name',`PublicationYear`='$publication_year',`EnglishVersionTitle`='$englishVersionTitle' WHERE Book_ID=$book_id";
-        $bookUpdate = mysqli_query($conn, $sql);
+        //$sqlUpdate = "UPDATE `book_informationsheet` SET `BookEdition`='$book_edition' WHERE Book_ID = '$book_id'";
+        $bookUpdate = mysqli_query($conn, $sqlUpdate);
     
         if ($bookUpdate) {
             // header("Location: bookdetails.php");
@@ -39,7 +40,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
+    
     <!-- Tab icon -->
     <link href="../assets/img/favicon.webp" rel="icon">
     <!-- Font Awesome -->
@@ -95,7 +96,7 @@
                     
                     <div class="col">
                         <label class="form-label"><strong>Book Edition:</strong></label>
-                        <input type="text" class="form-control" name="BookEdition" value="<?php echo $row['BookEdition'] ?>" readonly>
+                        <input type="text" class="form-control" name="BookEdition" value="<?php echo $row['BookEdition'] ?>">
                     </div>
                     
                     <div class="col">
@@ -130,7 +131,7 @@
 
                     <div class="col">
                         <label class="form-label"><strong>Price:</strong></label>
-                        <input type="text" class="form-control" name="Price" value="<?php echo $row['Price'] ?>">
+                        <input type="number" step="any" step="0.01" pattern="^\d*(\.\d{0,2})?$" class="form-control" name="Price" value="<?php echo $row['Price'] ?>">
                     </div>
 
                     <div class="col">
@@ -140,12 +141,12 @@
 
                     <div class="col">
                         <label class="form-label"><strong>Genre:</strong></label>
-                        <input type="text" class="form-control" name="genre" value="<?php echo $row['Genre'] ?>">
+                        <input type="text" class="form-control" name="Genre" value="<?php echo $row['Genre'] ?>">
                     </div>
 
                     <div class="col">
                         <label class="form-label"><strong>Language of Publication:</strong></label>
-                        <input type="text" class="form-control" name="publication_language" value="<?php echo $row['PublicationLanguage'] ?>" readonly>
+                        <input type="text" class="form-control" name="PublicationLanguage" value="<?php echo $row['PublicationLanguage'] ?>" readonly>
                     </div>
 
                     <div class="col">
@@ -166,15 +167,15 @@
             </form>
         </div>
 
-        <div class="popup" id="popUp">
+        <!-- <div class="popup" id="popUp">
             <img src="../assets/img/istockphoto-1416145560-612x612.jpg">
             <h2>Update successful</h2>
             <p>Changes are successfully made!</p>
             <button type="button" class="btn-ok" onclick="closePopup()">Ok</button>
-        </div>
+        </div> -->
     </div>
 
-
+<script src="../assets/js/bookEdit.js"></script>
       <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>

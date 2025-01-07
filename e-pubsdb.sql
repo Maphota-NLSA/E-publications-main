@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2024 at 11:01 AM
+-- Generation Time: Nov 27, 2024 at 07:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -62,7 +62,7 @@ CREATE TABLE `book_informationsheet` (
   `PublisherName` varchar(50) NOT NULL,
   `PublisherAddress` varchar(100) NOT NULL,
   `PublicationYear` varchar(100) NOT NULL,
-  `Price` decimal(10,0) NOT NULL,
+  `Price` double NOT NULL,
   `FictionOrNonFiction` varchar(50) NOT NULL,
   `Genre` varchar(100) NOT NULL,
   `PublicationLanguage` varchar(100) NOT NULL,
@@ -75,7 +75,8 @@ CREATE TABLE `book_informationsheet` (
 --
 
 INSERT INTO `book_informationsheet` (`Book_ID`, `PublisherEmail`, `AuthorName`, `AuthorPseudonym`, `EditorName`, `PublicationTitle`, `BookEdition`, `Impression`, `Isbn`, `SetISBN`, `PublisherName`, `PublisherAddress`, `PublicationYear`, `Price`, `FictionOrNonFiction`, `Genre`, `PublicationLanguage`, `EnglishVersionTitle`, `FileUpload`) VALUES
-(1, 'nicholus.mahlangu@nlsa.ac.za', 'Nick', 'Nick', '2341', 'Chronicles of a genuine character', '8th edition', 'Educational', 2147483647, '13 digits', 'Maphota Shiburi', 'Johannes Mogase', '2019', 128, 'Fiction', 'Academical', 'Chronicles of a genuine character', 'Chronicles of a genuine character', '6733218cdd8c3_Contact Information (Responses) - Form responses 1.pdf');
+(1, 'nicholus@nlsa.ac.za', 'Nicholus ', 'Nick updated', 'Williams', 'The new age', '1st Edition', 'Nick ', 2147483647, '542', 'Maphota Shiburi', 'Johannes Mogase', '2017', 178.9, 'Fiction', 'Academical', 'Chronicles of a genuine character', 'Chronicles of a genuine character updated', '6733218cdd8c3_Contact Information (Responses) - Form responses 1.pdf'),
+(2, 'nicolasmahlangu75@gmail.com', 'Maphota Shiburi', 'Nicholus', '23yu', 'Genuine Character', '5th', 'Growth and development', 2147483647, '13 digits', 'Nick Williams', '123 Aubrey Matlala', '2016', 79.78, 'Fiction', 'Wisdom', 'English', 'Character', '673dcd176da46_30th September - 4th October 2024 Weekly Timesheet.pdf');
 
 -- --------------------------------------------------------
 
@@ -89,65 +90,20 @@ CREATE TABLE `users` (
   `EmailAddress` varchar(100) NOT NULL,
   `Contact` varchar(10) NOT NULL,
   `Password` varchar(255) NOT NULL
-  --'title' VARCHAR(255) NOT NULL,
-  --'details' TEXT NOT NULL,
-  --'date' DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`User_ID`, `FullName`, `EmailAddress`, `Contact`, `Password`, 'tittle', 'details', 'date') VALUES
-(1, 'Nicholus Mahlangu', 'nicholus.mahlangu@nlsa.ac.za', '0711218836', '5f4dcc3b5aa765d61d8327deb882cf99' 'nlsaepup', 'moreinfor', NOW());
-(2, 'Nlsa Duja', 'nlsa@gmail.com', '0111111111', '12345678' 'nlsaepup', 'moreinfor', NOW());
-
-
---notifications for dumped table
-
---CREATE TABLE notifications (
- --   id INT AUTO_INCREMENT PRIMARY KEY,      -- Unique ID for each notification
-  --  title VARCHAR(255) NOT NULL,           -- Title of the notification
---    description TEXT,                      -- Detailed description
- --   type VARCHAR(50),                      -- Type/category of the notification (e.g., 'alert', 'info')
- --   date DATE DEFAULT CURRENT_DATE,        -- Date of the notification
- --   user_id INT,                           -- Optional: Link to a user (if required)
- --   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL -- Ensure user reference integrity
-);
-
-
-
---inseted data
-
---INSERT INTO notifications (title, description, type, date)
---VALUES
-  --  ('Server Downtime', 'The server will be down for maintenance.', 'alert', Now()),
-    --('Feature Update', 'New features have been added to the databasw.', 'info', '2024-11-20'),
-    --('System Upgrade', 'Upgraded to latest version', 'info', '2024-11-19');
-
-
+INSERT INTO `users` (`User_ID`, `FullName`, `EmailAddress`, `Contact`, `Password`) VALUES
+(1, 'Nicholus Mahlangu', 'nicholus.mahlangu@nlsa.ac.za', '0711218836', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 --
--- catalogues for dumped tables
---
---CREATE TABLE catalogues (
-  --  id INT AUTO_INCREMENT PRIMARY KEY,
-   -- title VARCHAR(255) NOT NULL,
-   -- details TEXT NOT NULL,
-   -- date DATETIME NOT NULL
---);
-
+-- Indexes for dumped tables
 --
 
--- Dumping data for table catalogues
-
---INSERT INTO catalogues (title, details, date) VALUES
---('Catalogue Review', 'Review the new catalogues for quality assurance.', NOW()),
---('Inventory Update', 'Update the inventory for newly received books.', NOW());
-
-
-
-
+--
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
@@ -179,7 +135,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `book_informationsheet`
 --
 ALTER TABLE `book_informationsheet`
-  MODIFY `Book_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Book_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

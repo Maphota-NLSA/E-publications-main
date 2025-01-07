@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin login - E-pubs</title>
 
-    <!-- Tab Icon -->
-    <link href="../assets/img/favicon.webp" rel="icon">
+        <!-- Tab Icon -->
+        <link href="../assets/img/favicon.webp" rel="icon">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-          rel="stylesheet" 
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
-          crossorigin="anonymous">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+      rel="stylesheet" 
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+      crossorigin="anonymous">
 
-    <!-- Bootstrap Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" 
-          rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" 
+      rel="stylesheet">
 
-    <!-- Ion Icons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<!-- Ion Icons -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/login.css">
@@ -29,24 +30,25 @@
 <body>
 
     <!-- Home Button Icon -->
-    <a href="welcome.html" class="home-icon">
+    <a href="index.php" class="home-icon">
         <i class="bi bi-house-fill"></i> Home
     </a>
 
      <!-- Admin Login Button -->
      <a href="cataloguerlogin.php" class="admin-login-button">
-        <i class="bi bi-person-circle"></i> Catalogue Login
+        <i class="bi bi-person-circle"></i> Cataloguer Login
     </a>
-
-    <!-- Logo and Heading -->
-    <div class="container text-center logo-container">
-        <img src="../assets/img/NLSA-logo.png" class="logo-img" alt="NLSA Logo">
-        <h1 class="system-heading">Electronic Publications</h1>
-    </div>
 
     <!-- Login Form Section -->
     <div class="sid d-flex flex-wrap justify-content-between align-items-center">
-        <!-- Left Side with Illustration -->
+
+        <!-- Logo and Heading -->
+        <div class="container text-center logo-container">
+            <img src="../assets/img/NLSA-logo.png" class="logo-img" alt="NLSA Logo">
+            <h1 class="system-heading">Electronic Publications</h1>
+        </div>
+
+    <!-- Left Side with Illustration -->
         <div class="side-left">
             <img src="../assets/img/photo 5.png" alt="Illustration" class="img-fluid">
         </div>
@@ -76,18 +78,18 @@
 
                 <!-- Forgot Password Link -->
                 <div class="mt-3">
-                    <a href="forgot_password.html" class="text-primary">Forgot Password?</a>
+                    <a href="forgot_password.php" class="text-primary">Forgot Password?</a>
                 </div>
 
                 <!-- Submit Button -->
                 <button type="submit" class="button1 btn btn-primary mt-4 w-100">
-                    Login As Admin
+                    Admin Login
                 </button>
 
                 <!-- Sign-Up Link -->
                 <div class="mt-3 text-center">
                     <span>Don't have an account?</span> 
-                    <a href="signup.html" class="text-primary">Sign Up</a>
+                    <a href="signup.php" class="text-primary">Sign Up</a>
                 </div>
             </form>
         </div>

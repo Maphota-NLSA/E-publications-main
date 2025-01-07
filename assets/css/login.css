@@ -37,17 +37,21 @@ body {
     position: absolute;
     top: 15px;
     right: 15px;
-    font-size: 24px;
+    font-size: 14px;
     color: #0066cc;
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 5px;
+    padding: 4px 8px;
+    background-color: #e8f5e9;
+    border-radius: 5px;
     transition: color 0.3s;
 }
 
 .home-icon:hover {
     color: #004c99;
+    background-color: #d1ecdd;
 }
 
 /* Login Container Styling */

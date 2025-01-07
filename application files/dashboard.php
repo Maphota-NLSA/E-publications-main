@@ -45,6 +45,7 @@
           <li class="nav-item"><a href="dashboard.php" class="nav-link">Dashboard</a></li>
           <li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
           <li class="nav-item"><a href="notifications.php" class="nav-link">Notifications</a></li>
+          <li class="nav-item"><a href="view.php" class="nav-link">Document Management</a></li>
           <li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>
         </ul>
       </nav>

@@ -1,0 +1,110 @@
+<table class="responsiveTable">
+  <thead>
+    <th>Number</th>
+    <th>Model</th>
+    <th>Price</th>
+    <th>Range</th>
+    <th>Acceleration</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Number">1</td>
+      <td data-label="Model">Model S</td>
+      <td data-label="Price">$83,900</td>
+      <td data-label="Range">651 km</td>
+      <td data-label="Acceleration">1.99 s</td>
+    </tr>
+    <tr>
+      <td data-label="Number">2</td>
+      <td data-label="Model">Model 3</td>
+      <td data-label="Price">$42,900</td>
+      <td data-label="Range">437 km</td>
+      <td data-label="Acceleration">3.1 s</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+CSSS
+____________
+
+
+.responsiveTable{width:100%;border-collapse:collapse}
+.responsiveTable td,.responsiveTable th{padding:12px 15px;
+border:1px solid #ddd;text-align:center;font-size:16px}
+.responsiveTable th{background-color:#92c9e6;color:#ffffff}
+.responsiveTable tbody tr:nth-child(even){background-color:#d1e8f5}
+@media (max-width:1000px){
+.responsiveTable thead{display:none}
+.responsiveTable,.responsiveTable tbody,.responsiveTable tr,
+.responsiveTable td{display:block;width:100%}
+.responsiveTable tr{margin-bottom:15px}
+.responsiveTable td{padding-left:50%;text-align:left;
+position:relative}
+.responsiveTable td::before{content:attr(data-label);
+position:absolute;left:0;width:50%;padding-left:15px;
+font-size:15px;font-weight:bold;text-align:left}}
+
+
+
+
+
+
+
+
+
+
+<table class="table table-bordered text-center">
+                            <tr class="bg-dark text-white">
+                                <td>Book ID</td>
+                                <td>Publisher's Email</td>
+                                <td>Author Name</td>
+                                <td>Author Pseudonym</td>
+                                <td>Editor Name</td>
+                                <td>Publication Title</td>
+                                <td>Book Edition</td>
+                                <td>Impression</td>
+                                <td>ISBN</td>
+                                <td>Set ISBN</td>
+                                <td>Publisher Name</td>
+                                <td>Publisher Address</td>
+                                <td>Publication Year</td>
+                                <td>Price</td>
+                                <td>FictionOrNonFiction</td>
+                                <td>Genre</td>
+                                <td>Publication Language</td>
+                                <td>English Version of Title</td>
+                                <td>File</td>
+                                <td>Edit</td>
+                            </tr>
+                            <tr class="bg-dark text-white">
+                               <?php 
+                                  while ($row = mysqli_fetch_assoc($bookresults)) 
+                                  {
+                                    ?>
+                                    <td><?php echo $row['Book_ID']; ?></td>
+                                    <td><?php echo $row['PublisherEmail']; ?></td>
+                                    <td><?php echo $row['AuthorName']; ?></td>
+                                    <td><?php echo $row['AuthorPseudonym']; ?></td>
+                                    <td><?php echo $row['EditorName']; ?></td>
+                                    <td><?php echo $row['PublicationTitle']; ?></td>
+                                    <td><?php echo $row['BookEdition']; ?></td>
+                                    <td><?php echo $row['Impression']; ?></td>
+                                    <td><?php echo $row['Isbn']; ?></td>
+                                    <td><?php echo $row['SetISBN']; ?></td>
+                                    <td><?php echo $row['PublisherName']; ?></td>
+                                    <td><?php echo $row['PublisherAddress']; ?></td>
+                                    <td><?php echo $row['PublicationYear']; ?></td>
+                                    <td><?php echo $row['Price']; ?></td>
+                                    <td><?php echo $row['FictionOrNonFiction']; ?></td>
+                                    <td><?php echo $row['Genre']; ?></td>
+                                    <td><?php echo $row['PublicationLanguage']; ?></td>
+                                    <td><?php echo $row['EnglishVersionTitle']; ?></td>
+                                    <td><?php echo $row['FileUpload']; ?></td>
+                                    <td><a href="#" class="btn btn-primary">Edit</a></td>
+                                  </tr>
+                              <?php }?>
+                            </tr>
+                        </table>
+       

@@ -47,7 +47,8 @@
                 <ul>
                     <li><a href="index.php" class="active">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">Overview</a></li>
-                    <li><a href="cataloguerlogin.php" class="getstarted">Log in</a></li>
+                    <li><a href="adminlogin.php" class="getstarted">Admin</a></li>
+                    <li><a href="cataloguerlogin.php" class="getstarted">Cataloguer</a></li>
                     <li><a href="form.php" class="getstarted">Form view</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle" tabindex="0" role="button" aria-label="Toggle navigation"></i>
