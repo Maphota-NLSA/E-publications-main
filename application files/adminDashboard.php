@@ -53,18 +53,32 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
             <ul>
               <li>
                 <a href="">
-                  <span class="las la-user"></span>
-                  Profile
-                </a>
-              </li>
-              <li>
-                <a href="">
                   <span class="las la-user-edit"></span>
-                  User Management
+                  User Management +
                 </a>
+                <ul>
+                <li>
+                  <a href="task.php">
+                    <span class="las la-tasks"></span>
+                      Task
+                  </a>
               </li>
               <li>
-                <a href="">
+                  <a href="viewStatus.php">
+                    <span class="las la-tasks"></span>
+                      View Status
+                  </a>
+              </li>
+              <li>
+                <a href="addCataloguers.php">
+                  <span class="las la-user-alt"></span>
+                  Add a Cataloguer
+                </a>
+              </li>
+                </ul>
+              </li>
+              <li>
+                <a href="bookDetails.php">
                   <span class="las la-book"></span>
                   E-Books
                 </a>
@@ -85,18 +99,6 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
                 <a href="">
                   <span class="las la-envelope"></span>
                   Mailbox
-                </a>
-              </li>
-              <li>
-              <a href="task.php">
-                  <span class="las la-tasks"></span>
-                  Task
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <span class="las la-user-alt"></span>
-                  Add a Cataloguer
                 </a>
               </li>
               <li>

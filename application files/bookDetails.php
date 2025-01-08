@@ -16,6 +16,10 @@
   <title>Book details</title>
 </head>
 <body>
+          <!-- Home Button Icon -->
+          <a href="adminDashboard.php" class="home-icon">
+        <i class="bi bi-house-fill"></i> Admin Dashboard
+    </a>
   <div class="scrollable-table">
   <table class="table">
     <thead>
