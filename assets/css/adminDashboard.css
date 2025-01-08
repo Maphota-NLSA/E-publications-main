@@ -112,27 +112,6 @@ body{
     margin-bottom: 1.5rem;
 }
 
-.sidebar-menu ul li {
-    padding: 16px 16px;
-	border-bottom: 1px solid #3c506a;
-	position: absolute;
-	left: 0;
-	width: 200px;
-}
-
-.sidebar-menu ul li ul{
-	position: absolute;
-	left: 0;
-	width: 200px;
-	background: #fff;
-	display: none;
-}
-
-.sidebar-menu ul li ul li{
-	width: 100%;
-	border-top: 1px solid rgba(0,0,0,.1);
-}
-
 .sidebar-menu li{
     margin-bottom: .8rem;
 }
@@ -407,4 +386,3 @@ table button{
         grid-template-columns: 100%;
     }
 }
-

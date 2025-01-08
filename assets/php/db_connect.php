@@ -3,6 +3,10 @@ session_start();
 include 'conn.php';
 include '../js/index.js';
 
+require "vendor/autoload.php";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 // Enable error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -83,17 +87,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 echo "File uploaded and data saved successfully.";
                                                 $to= $email;    
                                                 $subject = "SANB Informationsheet";
-                                                $headers= array(
-                                                    "MIME-Version" => "1.0",
-                                                    "Content-Type" => "text/html;charset=UTF-8",
-                                                    "From" => "nicolasmahlangu75@gmail.com",
-                                                    "Reply-To" => "nicolasmahlangu75@gmail.com"
-                                                );
-                                                $message = file_get_contents("form.php");
-    
-                                                $send = mail($to,$subject, $message, $headers);
-                                            
-                                                echo ($send ? "Mail is sent" : "An error occured");
+                                                
+                                                $mail = new PHPMailer(true);
+                                                $mail->isSMTP();
+                                                $mail->SMTPAuth = true;
+
+                                                $mail->Host = "smtp.gmail.com";
+                                                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                                                $mail->Port = 587;
+                                                $mail->Username = "nicolasmahlangu75@gmail.com";
+                                                $mail->Password="ykbq ecat ctyl avbb ";
+
+                                                $mail->setFrom($email, $publisher_name);
+                                                $mail->addAddress("nicholus.mahlangu@nlsa.ac.za","Nicholus");
+
+                                                $mail->Subject= "Submission of Electronic book";
+                                                $mail->Body="Hi Admin<br> A new book has been submitted";
+
+                                                $mail->send();
+                                                echo "email sent";
 
                                             } else {
                                                 echo "Database error: " . $conn->error;
