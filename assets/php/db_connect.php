@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
                 if ($conn && $conn->ping()) {
                     
-                    $sql = "SELECT * FROM book_informationsheet WHERE Isbn = '$isbn_electronic'";
+                    $sql = "SELECT * FROM book_informationsheet WHERE Isbn = '$isbn_electronic' AND PublicationYear < YEAR(CURDATE())";
                     $result = $conn->query($sql);
 
                     if ($result) {
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 $mail->addAddress("nicholus.mahlangu@nlsa.ac.za","Nicholus");
 
                                                 $mail->Subject= "Submission of Electronic book";
-                                                $mail->Body="Hi Admin A new book has been submitted $email";
+                                                $mail->Body="Hi Admin A new book has been submitted by $author_name $email please login on the E-pubs system and validate";
 
                                                 $mail->send();
                                                 echo "email sent";
