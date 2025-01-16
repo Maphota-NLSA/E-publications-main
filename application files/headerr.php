@@ -28,7 +28,9 @@
     <!-- Inline Styles -->
     <style>
         #header {
-            background: linear-gradient(90deg, red, green, blue);
+            background: rgb(233,233,233);
+            background: linear-gradient(90deg, rgba(233,233,233,0.8828348214285714) 35%, rgba(41,179,87,1) 74%, rgba(31,33,112,1) 115%);
+            padding: 14px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         #navbar ul li a.active {
@@ -41,8 +43,9 @@
     <header id="header" class="fixed-top animate__animated animate__fadeInDown">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="welcome.html" class="logo">
-                <img src="../assets/img/NLSA-logo.png" alt="National Library Logo" class="img-fluid" style="width:30%; height:30%">
+                <img src="../assets/img/NLSA-logo.png" alt="National Library Logo" class="img-fluid" style="width:50%; height:50%">
             </a>
+
             <nav id="navbar" class="navbar" role="navigation">
                 <ul>
                     <li><a href="index.php" class="active">Home</a></li>
