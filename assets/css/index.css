@@ -25,7 +25,7 @@ a {
 }
 
 a:hover {
-  color: #06ab4f;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -258,7 +258,7 @@ h6 {
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover>a {
-  color: rgb(255, 255, 255);
+  color: rgb(30, 176, 30);
 }
 
 .navbar-mobile .getstarted,
@@ -293,7 +293,7 @@ h6 {
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover>a {
-  color: #ffffff;
+  color: #06ab4f;
 }
 
 .navbar-mobile .dropdown>.dropdown-active {
@@ -512,7 +512,7 @@ section {
 }
 
 .services .icon-box:hover h4 a {
-  color: rgb(255, 255, 255);
+  color: rgb(30, 176, 30);
 }
 
 /*--------------------------------------------------------------
@@ -637,7 +637,7 @@ body {
   }
   
   a:hover {
-    color: #ffffff;
+    color: #06ab4f;
     text-decoration: none;
   }
   
@@ -905,7 +905,7 @@ body {
   .navbar-mobile .dropdown ul a:hover,
   .navbar-mobile .dropdown ul .active:hover,
   .navbar-mobile .dropdown ul li:hover>a {
-    color: #fdfdfd;
+    color: #06ab4f;
   }
   
   .navbar-mobile .dropdown>.dropdown-active {
@@ -1158,6 +1158,10 @@ body {
     line-height: 1;
   }
   
+  .img-fluid {
+    
+    background-position-x: -25px;
+  }
   .about .content p:last-child {
     margin-bottom: 0;
   }

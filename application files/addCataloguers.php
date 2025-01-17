@@ -19,7 +19,7 @@
         <i class="bi bi-house-fill"></i> Admin Dashboard
     </a>
     <div class="wrapper">
-        <h1>Sign Up</h1>
+        <h2>Add Cataloguer</h2>
         <p id="error-text"></p>
         <?php 
             if (isset($_SESSION['status'])) {

@@ -3,6 +3,7 @@
         <div class="me-md-auto text-center text-md-start">
             <div class="copyright">
                 Copyright <strong><span>NLSA</span></strong>. All Rights Reserved
+                <img src="../assets/img/Building.png" class="logo-img" alt="NLSA Logo"style="width:30%; height:30%">
             </div>
         </div>
 
@@ -13,6 +14,8 @@
             <a href="https://www.linkedin.com/company/NLSA" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
         </div>
     </div>
+    
+        
 </footer>
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center animate__animated animate__bounceIn"><i class="bi bi-arrow-up-short"></i></a>
@@ -21,5 +24,9 @@
 <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="../assets/js/main.js"></script>
+
+
+        
+    
 </body>
 </html>

@@ -28,7 +28,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url("../assets/img/LogoL.jpeg") no-repeat center center;
+            background: url("../assets/img/nlsa_buildings.png") no-repeat center center;
             background-size: cover;
             backdrop-filter: blur(6px); /* Slight blur effect for elegance */
         }

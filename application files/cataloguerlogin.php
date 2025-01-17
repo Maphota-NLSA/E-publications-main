@@ -28,7 +28,14 @@
 
 <body>
 
-    <!-- Logo and Heading -->
+<div class="sid d-flex flex-wrap justify-content-between align-items-center">
+
+<!-- Logo and Heading -->
+<div class="container text-center logo-container">
+    
+    <img src="../assets/img/NLSA-logo.png" class="logo-img" alt="NLSA Logo"style="width:30%; height:30%">
+    <h1 class="system-heading">Electronic Publications</h1>
+</div>
 
     <!-- Login Form Section -->
     <div class="sid d-flex flex-wrap justify-content-between align-items-center">

@@ -28,7 +28,9 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
     <div class="sidebar">
       <div class="sidebar-brand">
         <div class="brand-flex">
-          <img src="../assets/img/NLSA-logo.png" width="40px" alt="" />
+        <img src="../assets/img/NLSA2-logo.png" alt="National Library Logo" class="img-fluid" style="width:50%; height:50%" >
+  
+            </a>
           <div class="brand-icons">
             <span class="las la-bell"></span>
             <span class="las la-user-circle"></span>
@@ -38,7 +40,7 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
 
       <div class="sidebar-main">
         <div class="sidebar-user">
-          <img src="../assets/img/NLSA-logo.png" alt="" />
+        <img src="../assets/img/admin.png" alt="National Library Logo" class="img-fluid" >
           <div>
             <h3>Administrator</h3>
             <span>legaldeposit@nlsa.ac.za</span>

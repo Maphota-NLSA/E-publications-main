@@ -25,6 +25,22 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/login.css">
+
+    <style>
+        
+        /* Footer styling */
+        footer {
+            text-align: bottom; /* Center align the content */
+            background-color: #f8f9fa; /* Light background color */
+            padding: 20px; /* Add some padding */
+        }
+
+            footer img {
+                max-width: 100%; /* Responsive image */
+                height: auto; /* Preserve aspect ratio */
+                margin-bottom: 10px; /* Add space between the image and copyright text */
+            }
+    </style>
 </head>
 
 <body>
@@ -44,7 +60,8 @@
 
         <!-- Logo and Heading -->
         <div class="container text-center logo-container">
-            <img src="../assets/img/NLSA-logo.png" class="logo-img" alt="NLSA Logo">
+            
+            <img src="../assets/img/NLSA-logo.png" class="logo-img" alt="NLSA Logo"style="width:30%; height:30%">
             <h1 class="system-heading">Electronic Publications</h1>
         </div>
 
@@ -95,6 +112,14 @@
         </div>
     </div>
 
+    <!-- Footer -->
+
+    <!-- Footer section with image 
+    <footer>
+    <img src="../assets/img/Building.png" class="logo-img" alt="NLSA Logo"style="width:30%; height:30%">
+        <p>&copy; 2025 National Library of South Africa. All rights reserved.</p>
+    </footer>
+-->
     <script src="../assets/js/login.js"></script>
 </body>
 </html>

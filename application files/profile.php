@@ -76,7 +76,10 @@ $conn->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/profile.css">
 </head>
+
+
 <body>
+    
     <div class="container">
         <h2>Profile Details</h2>
         <?php if (!empty($message)): ?>
@@ -101,5 +104,7 @@ $conn->close();
             <button type="submit" class="btn btn-primary">Update Profile</button>
         </form>
     </div>
+    
 </body>
+
 </html>
