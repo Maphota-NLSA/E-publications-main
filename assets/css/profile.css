@@ -1,6 +1,6 @@
 /* General body background color */
 body {
-    background-color: rgb(13, 5, 39); /* Green background for the page */
+    background-color: rgb(23, 3, 88); /* Green background for the page */
     font-family: Arial, sans-serif;
     color: #333; /* Ensure text is readable */
     margin: 0;
@@ -11,7 +11,7 @@ body {
 
 /* Heading background and style */
 h2 {
-    background-color: lightblue; /* Blue background for headings */
+    background-color: rgb(105, 115, 119); /* Blue background for headings */
     padding: 10px;
     text-align: center;
     color: #fff;
@@ -20,11 +20,23 @@ h2 {
 
 /* Form input fields background and style */
 .form-control {
-    background-color: #24026e; /* Light red background for input fields */
+    background-color: #a09e9e; /* Light red background for input fields */
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-    color: #333;
+    color: #fff;
+}
+.alert {
+
+    background-color: rgb(105, 115, 119); /* Blue background for headings */
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    border-color: rgb(105, 115, 119);
+}
+
+.form-label{
+    color: #fff;
 }
 
 /* Styling the submit button */

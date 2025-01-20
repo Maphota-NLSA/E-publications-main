@@ -18,7 +18,7 @@ $message = "";
 
 try {
     // Prepare SQL query to fetch user profile
-    $sql = $conn->prepare("SELECT FullName, EmailAddress, ContactNumber FROM users WHERE EmailAddress = ?");
+    $sql = $conn->prepare("SELECT FullName, EmailAddress, Contact FROM users WHERE EmailAddress = ?");
     $sql->bind_param("s", $email);
     $sql->execute();
     $result = $sql->get_result();
@@ -43,13 +43,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Update user profile in the database
     if (!empty($fullName) && !empty($contact)) {
         try {
-            $updateSql = $conn->prepare("UPDATE users SET FullName = ?, ContactNumber = ? WHERE EmailAddress = ?");
+            $updateSql = $conn->prepare("UPDATE users SET FullName = ?, Contact = ? WHERE EmailAddress = ?");
             $updateSql->bind_param("sss", $fullName, $contact, $email);
 
             if ($updateSql->execute()) {
                 $message = "Profile updated successfully!";
                 $profile['FullName'] = $fullName;
-                $profile['ContactNumber'] = $contact;
+                $profile['Contact'] = $contact;
+
+                $profile['FullName'] = "";
+                $profile['EmailAddress'] = "";
+                $profile['Contact'] = "";
             } else {
                 $message = "Failed to update profile. Please try again.";
             }
@@ -99,7 +103,7 @@ $conn->close();
             <div class="mb-3">
                 <label for="contact" class="form-label">Contact Number</label>
                 <input type="text" class="form-control" id="contact" name="contact" 
-                       value="<?= htmlspecialchars($profile['ContactNumber'] ?? '') ?>" required>
+                       value="<?= htmlspecialchars($profile['Contact'] ?? '') ?>" required>
             </div>
             <button type="submit" class="btn btn-primary">Update Profile</button>
         </form>
