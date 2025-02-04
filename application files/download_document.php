@@ -1,6 +1,8 @@
 <?php
-session_start();
-
+// if(!defined('nlsalockurl')){
+//     header('Location: index.php');
+//     die('');
+// }
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -21,7 +23,7 @@ if (!isset($_GET['Book_ID']) || !is_numeric($_GET['Book_ID'])) {
 
 $bookId = (int)$_GET['Book_ID'];
 
-// Fetch the file path
+// Fetch the file path from the database
 $query = "SELECT FileUpload AS file_path FROM book_informationsheet WHERE Book_ID = :id";
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(':id', $bookId, PDO::PARAM_INT);
@@ -29,16 +31,17 @@ $stmt->execute();
 $document = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$document || empty($document['file_path'])) {
-    die(json_encode(['success' => false, 'message' => 'File not found.']));
+    die(json_encode(['success' => false, 'message' => 'File not found in the database.']));
 }
 
-$filePath = __DIR__ . "../uploads/" . $document['file_path']; // Adjust path whenever switching device or storage
 
-if (!file_exists($filePath)) {
+$filePath = realpath(__DIR__ . "/../uploads/" . $document['file_path']); // Ensuring proper directory resolution
+
+if (!$filePath || !file_exists($filePath)) {
     die(json_encode(['success' => false, 'message' => 'File does not exist on the server.']));
 }
 
-// Increment download count
+// Increment the download count
 $updateQuery = "UPDATE book_informationsheet SET downloads = downloads + 1 WHERE Book_ID = :id";
 $updateStmt = $pdo->prepare($updateQuery);
 $updateStmt->bindParam(':id', $bookId, PDO::PARAM_INT);

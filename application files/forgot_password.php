@@ -28,7 +28,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url("../assets/img/LogoL.jpeg") no-repeat center center;
+            background: url("../assets/img/nlsa_buildings.png") no-repeat center center;
             background-size: cover;
             backdrop-filter: blur(6px); /* Slight blur effect for elegance */
         }
@@ -131,7 +131,7 @@
         <h4>Forgot Password</h4>
         <p>Enter your email address below, and we’ll send you instructions to reset your password.</p>
 
-        <form action="#" method="POST" class="password-form">
+        <form action="../assets/php/send_password_reset.php" method="POST" class="password-form">
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
@@ -140,7 +140,7 @@
 
         <div class="back-to-login">
             <i class="bi bi-arrow-left-circle"></i>
-            <a href="index.php">Back to Login</a>
+            <a href="cataloguerlogin.php">Back to Login</a>
         </div>
     </div>
 

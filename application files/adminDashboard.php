@@ -1,5 +1,4 @@
 <?php
-
 require_once('../assets/php/adminDashboard.php');
 $query = "select * from book_informationsheet";
 $result = mysqli_query($conn,$query);
@@ -28,7 +27,9 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
     <div class="sidebar">
       <div class="sidebar-brand">
         <div class="brand-flex">
-          <img src="../assets/img/NLSA-logo.png" width="40px" alt="" />
+        <img src="../assets/img/NLSA2-logo.png" alt="National Library Logo" class="img-fluid" style="width:50%; height:50%" >
+  
+            </a>
           <div class="brand-icons">
             <span class="las la-bell"></span>
             <span class="las la-user-circle"></span>
@@ -38,7 +39,7 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
 
       <div class="sidebar-main">
         <div class="sidebar-user">
-          <img src="../assets/img/NLSA-logo.png" alt="" />
+        <img src="../assets/img/admin.png" alt="National Library Logo" class="img-fluid" >
           <div>
             <h3>Administrator</h3>
             <span>legaldeposit@nlsa.ac.za</span>
@@ -50,64 +51,58 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
             <div class="menu-head">
               <span>Dashboard</span>
             </div>
-            <ul>
-              <li>
-                <a href="">
-                  <span class="las la-user-edit"></span>
-                  User Management +
-                </a>
-                <ul>
-                <li>
-                  <a href="task.php">
-                    <span class="las la-tasks"></span>
-                      Task
-                  </a>
-              </li>
-              <li>
-                  <a href="viewStatus.php">
-                    <span class="las la-tasks"></span>
-                      View Status
-                  </a>
-              </li>
-              <li>
-                <a href="addCataloguers.php">
-                  <span class="las la-user-alt"></span>
-                  Add a Cataloguer
-                </a>
-              </li>
-                </ul>
-              </li>
-              <li>
-                <a href="bookDetails.php">
-                  <span class="las la-book"></span>
-                  E-Books
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <span class="las la-chart-pie"></span>
-                  Analytics
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <span class="las la-calendar"></span>
-                  Calendar
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <span class="las la-envelope"></span>
-                  Mailbox
-                </a>
-              </li>
-              <li>
-                <a href="../application files/logout.php">
-                  <span class="las la-sign-out-alt"></span>
-                  Logout
-                </a>
-              </li>
-            </ul>
+
+      </div>      
+<ul>
+<li class="other-options">
+    <a href="#">
+      <span class="las la-chart-pie"></span> Analytics
+    </a>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-button">
+      <span class="las la-user-edit"></span> User Management +
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="task.php">
+          <span class="las la-tasks"></span> Task
+        </a>
+      </li>
+      <li>
+        <a href="viewStatus.php">
+          <span class="las la-tasks"></span> View Status
+        </a>
+      </li>
+      <li>
+        <a href="addCataloguers.php">
+          <span class="las la-user-alt"></span> Add a Cataloguer
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li class="other-options">
+    <a href="bookDetails.php">
+      <span class="las la-book"></span> E-Books
+    </a>
+  </li>
+ 
+  <li class="other-options">
+    <a href="calendar.php">
+      <span class="las la-calendar"></span> Calendar
+    </a>
+  </li>
+  <li class="other-options">
+    <a href="#">
+      <span class="las la-envelope"></span> Mailbox
+    </a>
+  </li>
+  <li class="other-options">
+    <a href="../application files/logout.php">
+      <span class="las la-sign-out-alt"></span> Logout
+    </a>
+  </li>
+</ul>
           </div>
           </div>
         </div>
@@ -246,3 +241,73 @@ $bookTotal = "SELECT SQL_CALC_FOUND_ROWS * FROM book_informationsheet";
       <label for="sidebar-toggle" class="body-label"></label>
   </body>
 </html>
+
+<style>
+  .dropdown {
+  position: relative;
+}
+
+.dropdown-button {
+  background-color: transparent;
+  color: #333;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #233245;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-menu li {
+  margin-bottom: 10px;
+}
+
+.dropdown-menu a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  color: #23527c;
+  background-color: #f2f2f2; /* hover background color */
+  border-radius: 80px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.other-options {
+  margin-top: 0;
+  transition: margin-top 0.3s ease-in-out;
+}
+
+.other-options a {
+  color: #333;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  
+}
+
+.other-options a:hover {
+  background-color:rgb(213, 212, 212); /* hover background color */
+  color: #233245;
+  border-radius: 50px;
+}
+
+.dropdown:hover ~ .other-options {
+  margin-top: 40px; /* Adjust this value to match the height of the dropdown menu */
+}
+
+</style>

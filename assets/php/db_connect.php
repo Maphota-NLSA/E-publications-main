@@ -64,6 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if ($result) {
                         if (mysqli_num_rows($result) > 0) {
                             echo "ISBN already exists in our database, please conatct our legal deposits team to get another ISBN";
+
+                            if(strlen($result) <> 13){
+                                echo "ISBN must be 13 digits";
+                            }
+                            
+                            if($publisher_year > date('Y', $timestamp)){
+                                echo "Publication year must not be the same as the current year"; 
+                            }
                         }else{
                             
                             $fileQuery = "SELECT * FROM book_informationsheet WHERE FileUpload = '$file'";
@@ -97,8 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 $mail->addAddress("nicholus.mahlangu@nlsa.ac.za","Nicholus");
 
                                                 $mail->Subject= "Submission of Electronic book";
-                                                $mail->Body="Hi Admin A new book has been submitted $email";
 
+                                                $mail->Body="Hi Admin. A new book titled: $title_of_publication (ISBN: $isbn_electronic) written by: $author_name  published on: $publisher_year has been submitted by $author_name Email address: $email";
                                                 $mail->send();
                                                 echo "email sent";
 

@@ -30,7 +30,9 @@ $query = "SELECT
             PublicationTitle AS title, 
             Genre AS description, 
             FileUpload AS file_path, 
-            downloads AS download_count 
+            downloads AS download_count,
+            PublisherEmail AS email,
+            ISBN AS isbn
           FROM book_informationsheet";
 
 if ($searchTerm !== '') {

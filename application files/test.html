@@ -1,0 +1,60 @@
+
+    
+      <li class="dropdown">
+        <a href="#" class="dropdown-button">
+          <span class="las la-user-edit"></span> User Management +
+        </a>
+        <div class="dropdown-content">
+          <a href="task.php">The Task</a>
+          <a href="viewStatus.php">View Status</a>
+          <a href="addCataloguers.php">Add a Cataloguer</a>
+        </div>
+      </li>
+    
+  
+
+  <style>
+    .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-content a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  color: #23527c;
+}
+
+.dropdown-button:focus + .dropdown-content {
+  display: block;
+}
+
+.dropdown-content:hover {
+  display: block;
+}
+
+  </style>

@@ -9,7 +9,15 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+body{
+    min-height: 100vh;
+    background-image: url(../img/NLSA-logo.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: right;
+    overflow: hidden;
 
+}
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -17,6 +25,7 @@ body {
   font-size: 12pt;
   min-height:100vh;
   /*I also changed the color, font-size, and added the min-height*/
+  
 }
 
 a {
@@ -25,7 +34,7 @@ a {
 }
 
 a:hover {
-  color: #06ab4f;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -62,7 +71,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: rgb(30, 176, 30);
+  background: rgb(255, 255, 255);
   color: #fff;
 }
 
@@ -1158,6 +1167,10 @@ body {
     line-height: 1;
   }
   
+  .img-fluid {
+    
+    background-position-x: -25px;
+  }
   .about .content p:last-child {
     margin-bottom: 0;
   }

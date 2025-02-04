@@ -1,5 +1,5 @@
-<?php
-require_once('../assets/php/conn.php');
+<?php 
+    require_once('../assets/php/conn.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Book_ID'], $_POST['cataloguer_id'])) {
     $bookId = $_POST['Book_ID'];

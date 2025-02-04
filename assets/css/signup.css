@@ -20,8 +20,8 @@ html{
 }
 body{
     min-height: 100vh;
-    background-image: url(../img/NLSA-logo.png);
-    background-size: auto;
+    background-image: url(../img/images1.jpg);
+    background-size: 300px 100px;
     background-repeat: no-repeat;
     background-position: right;
     overflow: hidden;

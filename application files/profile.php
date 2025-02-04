@@ -7,7 +7,7 @@ include '../assets/php/conn.php';
 
 // Check if the user is logged in
 if (!isset($_SESSION['email'])) {
-    header("Location: login.php");
+    header("Location: cataloguerlogin.php");
     exit();
 }
 
@@ -17,44 +17,41 @@ $profile = [];
 $message = "";
 
 try {
-    // Prepare SQL query to fetch user profile
-    $sql = $conn->prepare("SELECT FullName, EmailAddress, ContactNumber FROM users WHERE EmailAddress = ?");
-    $sql->bind_param("s", $email);
-    $sql->execute();
-    $result = $sql->get_result();
+    // Fetch user profile from the database
+    $stmt = $conn->prepare("SELECT FullName, EmailAddress, Contact FROM users WHERE EmailAddress = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $profile = $result->fetch_assoc();
     } else {
         $message = "Profile not found.";
     }
-
-    $sql->close();
+    $stmt->close();
 } catch (Exception $e) {
     error_log("Error fetching profile: " . $e->getMessage());
     $message = "An error occurred while loading your profile.";
 }
 
-// Handle form submission
+// Handle form submission for profile update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fullName = trim($_POST['fullName']);
     $contact = trim($_POST['contact']);
 
-    // Update user profile in the database
     if (!empty($fullName) && !empty($contact)) {
         try {
-            $updateSql = $conn->prepare("UPDATE users SET FullName = ?, ContactNumber = ? WHERE EmailAddress = ?");
-            $updateSql->bind_param("sss", $fullName, $contact, $email);
+            $updateStmt = $conn->prepare("UPDATE users SET FullName = ?, Contact = ? WHERE EmailAddress = ?");
+            $updateStmt->bind_param("sss", $fullName, $contact, $email);
 
-            if ($updateSql->execute()) {
+            if ($updateStmt->execute()) {
                 $message = "Profile updated successfully!";
                 $profile['FullName'] = $fullName;
-                $profile['ContactNumber'] = $contact;
+                $profile['Contact'] = $contact;
             } else {
                 $message = "Failed to update profile. Please try again.";
             }
-
-            $updateSql->close();
+            $updateStmt->close();
         } catch (Exception $e) {
             error_log("Error updating profile: " . $e->getMessage());
             $message = "An error occurred while updating your profile.";
@@ -67,18 +64,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Close database connection
 $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>User Profile</title>
+    <link href="../assets/img/favicon.webp" rel="icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/profile.css">
+    <style>
+        body {
+            background-image: url('../assets/img/BackgroundI.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
+
+
 <body>
+    
     <div class="container">
-        <h2>Profile Details</h2>
+        <h2 class="text-center mb-4">Your Profile</h2>
         <?php if (!empty($message)): ?>
             <div class="alert alert-info"><?= htmlspecialchars($message) ?></div>
         <?php endif; ?>
@@ -96,10 +128,14 @@ $conn->close();
             <div class="mb-3">
                 <label for="contact" class="form-label">Contact Number</label>
                 <input type="text" class="form-control" id="contact" name="contact" 
-                       value="<?= htmlspecialchars($profile['ContactNumber'] ?? '') ?>" required>
+                       value="<?= htmlspecialchars($profile['Contact'] ?? '') ?>" required>
             </div>
-            <button type="submit" class="btn btn-primary">Update Profile</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </div>
         </form>
     </div>
+    
 </body>
+
 </html>

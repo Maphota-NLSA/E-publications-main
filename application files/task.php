@@ -93,5 +93,6 @@ $cataloguerResults = mysqli_query($conn, $cataloguerQuery);
       </table>
     </div>
   </div>
+
 </body>
 </html>

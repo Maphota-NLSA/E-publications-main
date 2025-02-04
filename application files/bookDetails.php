@@ -1,4 +1,4 @@
-<?php 
+<?php  
     require_once('../assets/php/conn.php');
     $sql = "Select * from book_informationsheet";
     $bookresults = mysqli_query($conn, $sql);
